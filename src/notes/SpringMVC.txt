@@ -1,0 +1,18 @@
+1.Springmvc之Controller配置
+   类上面可以配置@Controller或者@RestController
+   @RestController是@ResponseBody和@Controller的组合注解，也就是返回给前台的数据，当不需要返回视图Model，该类可以使用@RestController
+    @RequestMapping("/User")该注解配置在类上表示访问该类的方法需要加上该前缀,@RequestMapping("/getUser")配置在方法上表示方法某类中具体方法的名称
+    例如：
+    @RestController
+    @RequestMapping("/hello")
+    public class HelloController {
+        @Autowired
+        private HelloService helloService;
+
+        @RequestMapping("/getAllUsers")
+        public String getAllUsers(Model model){
+            List<Users> list=helloService.getAllUsers();
+            model.addAttribute("msg",list);
+            return "/hello";
+        }
+    }

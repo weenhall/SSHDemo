@@ -1,0 +1,9 @@
+如何检查一个数组(无序)是否包含一个特定的值？这是一个在Java中经常用到的并且非常有用的操作。
+
+Apache Commons类库中还提供了一个ArrayUtils类，可以使用其contains方法判断数组和值的关系。
+
+
+import org.apache.commons.lang3.ArrayUtils;
+public  static boolean useArrayUtils(String[] arr, String targetValue) {
+    return ArrayUtils.contains(arr,targetValue);
+}

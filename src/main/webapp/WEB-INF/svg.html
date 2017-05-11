@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg 交互测试</title>
+</head>
+<style>
+    svg{border:1px solid #000;}
+    use:nth-of-type(even):hover{
+        opacity:0.9;
+        cursor:crosshair;/*十字线光标*/
+    }
+    use:nth-of-type(odd):hover{
+        opacity:0.5;
+        cursor:crosshair;/*十字线光标*/
+    }
+</style>
+<body>
+<div >
+    <button type="button" id="btn">点击按钮生成树</button>
+</div>
+<svg width="400" height="600">
+    <defs>
+        <pattern id="grap" patternUnits="userSpaceOnUse" x="0" y="0" width="100" height="67" viewBox="0 0 102 76">
+            <image x="0" y="0" width="102" height="76" xlink:href="http://pic27.nipic.com/20130324/9148618_153134223000_2.jpg"></image>
+        </pattern>
+        <linearGradient id="TrunkGrad">
+            <stop offset="0%" stop-color="#663300"></stop>
+            <stop offset="40%" stop-color="#996600"></stop>
+            <stop offset="100%" stop-color="#552200"></stop>
+        </linearGradient>
+        <rect x="-5" y="-50" width="10" height="50" id="Trunk"></rect>
+        <path d="M-25,-50L-10,-80L-20,-80L-5,-110L-15,-110L0,-140L15,-110L5,-110L20,-80L10,-80L25,-50Z" fill="#f00" id="can">
+        </path>
+        <linearGradient id="shadow" x=0 y=0 x2=0 y2=100%>
+            <stop offset="0%" stop-color="#000" stop-opacity=".5"></stop>
+            <stop offset="20%" stop-color="#996600" stop-opacity="0"></stop>
+        </linearGradient>
+        <g id="tree">
+            <use xlink:href="#Trunk" fill="url(#TrunkGrad)"/>
+            <use xlink:href="#Trunk" fill="url(#shadow)"/>
+            <use xlink:href="#can" fill="none" stroke="#663300" stroke-linejoin="round" stroke-width="4px" />
+            <use xlink:href="#can" fill="#339900" stroke="none"/>
+        </g>
+        <g id="treeShadow">
+            <use xlink:href="#Trunk" fill="#000"/>
+            <use xlink:href="#can" fill="#000" stroke="none"/>
+        </g>
+    </defs>
+    <text y=60 x=200 font-family="Arial" font-size="60px" fill="#996600" text-anchor="middle">tree</text>
+    <text y=90 x=200 font-family="Arial" font-size="20px" fill="#996600" text-anchor="middle" id="treeCounter"></text>
+    <text y=550 x=20 font-family="Arial" font-size="20px" fill="#996600" text-anchor="left">
+        <tspan>点击一颗树或树的影子</tspan>
+        <tspan>并移除掉它。。。</tspan>
+    </text>
+    <g transform="translate(-10,350)" stroke-width="20" stroke="url(#grap)" stroke-linejoin="round">
+        <path d="M0,0Q170,-50 260,-190Q310,-250 410,-250" fill="none">
+        </path>
+    </g>
+    <!--skewX() x轴方向向右扭曲25像素-->
+    <use xlink:href="#treeShadow" transform="translate(130,250) scale(1,.6) skewX(-25)" opacity="0.4" />
+    <use xlink:href="#tree" transform="translate(130,250)" />
+    <use xlink:href="#treeShadow" transform="translate(260,500) scale(2,1.2) skewX(-25)" opacity="0.4" />
+    <use xlink:href="#tree" transform="translate(260,500) scale(2)" />
+</svg>
+<p id="treeCon"></p>
+</body>
+<script>
+    /*
+     document.createElementNS() 创建带有命名空间的的<use>元素
+     setAttributeNS() 方法创建或改变具有命名空间的属性。
+     语法：
+     elementNode.setAttributeNS(name,value)
+     */
+    document.getElementById('btn').onclick = function(){
+        var x = Math.floor(Math.random()*400);//随机数x
+        var y = Math.floor(Math.random()*600);//随机数y
+        var scale = Math.random()+0.5;//生成随机缩放的比例
+        var translate = 'translate('+x+','+y+')';
+        var tree = document.createElementNS('http://www.w3.org/2000/svg','use');
+        var treeSd = document.createElementNS('http://www.w3.org/2000/svg','use');
+        treeSd.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href','#treeShadow');
+        treeSd.setAttribute('transform',translate + ' scale('+ scale +','+ scale*0.6 +') skewX(-25)');
+        treeSd.setAttribute('opacity',0.4);
+        document.querySelector('svg').appendChild(treeSd);//添加到svg中
+        tree.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href','#tree');
+        tree.setAttribute('transform',translate + ' scale('+ scale +')');
+        document.querySelector('svg').appendChild(tree);//添加到svg中
+        updateTrees();
+    }
+    function updateTrees(){
+        //查找所有的use元素
+        var list = document.querySelectorAll('use');
+        var treeCount = 0;
+        for(var i=0;i<list.length;i++){
+            //如果是树或者树的阴影
+            if(list[i].getAttribute('xlink:href') == '#tree' || list[i].getAttribute('xlink:href') == '#treeShadow'){
+                treeCount++;
+                //点击树或者阴影移除自己
+                list[i].onclick = removeTree;
+            }
+        }
+        //更新数量
+        var counter = document.getElementById('treeCon');
+        counter.innerHTML = parseInt(treeCount/2) + 'trees in the svg';
+    }
+    function removeTree(e){
+        //e.target 被点击的目标对象
+        var e = e.target;
+        /*
+         e.correspondingUserElement 意思大概是当使用的元素有嵌套的时候使用最外层的元素作为目标对象
+         具体说明可参考地址：
+         https://msdn.microsoft.com/en-us/library/ff971929(v=vs.85).aspx
+         */
+        if(e.correspondingUserElement){
+            e =  e.correspondingUserElement;
+        }
+        e.parentNode.removeChild(e);
+        updateTrees();
+    }
+</script>

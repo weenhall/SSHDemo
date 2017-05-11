@@ -1,0 +1,13 @@
+{
+  "editor": {
+    "xtype": "repcombo",
+    "valueColumn": "sx",
+    "displayColumn": "sx_name",
+    "dbName": "platform",
+    "tableName": "company.v_nssx",
+    "condition": "",
+    "allowBlank": false,
+    "editable": false,
+    "triggerAction": "all"
+  }
+}

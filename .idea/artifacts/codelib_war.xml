@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="codelib:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ween-code.war">
+      <element id="artifact" artifact-name="codelib:war exploded" />
+    </root>
+  </artifact>
+</component>

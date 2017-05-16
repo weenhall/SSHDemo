@@ -20,7 +20,27 @@ public class test {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = sdf.parse("2017-05-01 09:24:57");
         Date d2 = sdf.parse("2017-05-04 14:51:29");
-        //  System.out.println(date.getTime()==d2.getTime());
+        String str = "";
+//        List<String> list = new ArrayList<String>();
+//        list.add("小明");
+//        list.add("小黄");
+//        list.add("小率");
+//        list.add("小红");
+//        for (int i = 0; i < list.size(); i++) {
+//            if (i > 2) {
+//                str = str.substring(0, str.length() - 1) + "等";
+//                break;
+//            }
+//            str = str + list.get(i) + ",";
+//        }
+//        str=str.endsWith(",")?str.substring(0,str.length()-1):str;
+//        System.out.println(str);
+        Set<String> set=new HashSet<String>();
+        set.add("ZT001");
+        set.add("ZT001");
+        for(String st1:set){
+            System.out.println(st1);
+        }
     }
 
     public static void testSwitch(int input) {

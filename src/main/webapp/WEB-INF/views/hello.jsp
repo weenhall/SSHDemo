@@ -20,45 +20,79 @@
     <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/statics/jquery/jquery-1.9.1.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/statics/bootstrap/js/bootstrap-paginator.js"></script>
     <script language="javascript" type="text/javascript" src="../../statics/My97DatePicker/WdatePicker.js"></script>
-    <style>
+    <style type="text/css">
 
     </style>
 </head>
 <body>
-<h1 align="center">Say Hello</h1>
-<table class="table table-hover table-bordered" style="width: 50% ;margin-left: 25%">
-    <tr class="success">
-        <th>邮箱</th>
-        <th>用户名</th>
-        <th>昵称</th>
-        <th>密码</th>
-        <th>手机</th>
-        <th>身份证</th>
-        <th>记录时间</th>
-    </tr>
-    <c:forEach items="${msg}" var="person" varStatus="status">
-        <tr>
-            <td>${person.uemail}</td>
-            <td>${person.username}</td>
-            <td>${person.nickname}</td>
-            <td>${person.password}</td>
-            <td>${person.phonenum}</td>
-            <td>${person.cardnum}</td>
-            <td><input type="text" class="Wdate" placeholder="如：1990-01-01" onClick="WdatePicker() "></td>
+<div class="container">
+    <h1 align="center">Say Hello</h1>
+    <table class="table table-hover table-bordered">
+        <tr class="success">
+            <th>邮箱</th>
+            <th>用户名</th>
+            <th>昵称</th>
+            <th>密码</th>
+            <th>手机</th>
+            <th>身份证</th>
+            <th>记录时间</th>
         </tr>
-    </c:forEach>
-</table>
-<div class="pagination">
-    <ul>
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
+        <c:forEach items="${msg}" var="person" varStatus="status">
+            <tr>
+                <td>${person.uemail}</td>
+                <td>${person.username}</td>
+                <td>${person.nickname}</td>
+                <td>${person.password}</td>
+                <td>${person.phonenum}</td>
+                <td>${person.cardnum}</td>
+                <td><input type="text" class="Wdate" placeholder="如：1990-01-01" onClick="WdatePicker() "></td>
+            </tr>
+        </c:forEach>
+    </table>
+    <ul class="pagination"></ul>
 </div>
 </body>
 </html>
+<script>
+    var options = {
+        currentPage:1, //设置当前页，默认起始页为第一页
+        totalPages:'5', //总页数
+        numberOfPages:5, //设置控件显示的页码数,跟后台计算出来的总页数没多大关系
+        bootstrapMajorVersion:3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
+        useBootstrapTooltip:'true',//是否显示tip提示框
+        itemTexts:function(type,page, current){//文字翻译
+            switch (type) {
+                case "first":
+                    return "首页";
+                case "prev":
+                    return "上一页";
+                case "next":
+                    return "下一页";
+                case "last":
+                    return "尾页";
+                case "page":
+                    return page;
+            }
+        },
+        onPageClicked:function(event,originalEvent,type,page){
+//            $.ajax({
+//                type: 'get',
+//                url: "/home/getAllUsers",
+//                data: {
+//                    currentPage:page,
+//                    pageSize:2
+//                },
+//                dataType: "json",
+//                success: function (response) {
+//
+//                }
+//            });
+
+        }
+    };
+    $(document).ready(function () {
+        $(".pagination").bootstrapPaginator(options);
+    });
+</script>

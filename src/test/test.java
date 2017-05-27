@@ -35,11 +35,26 @@ public class test {
 //        }
 //        str=str.endsWith(",")?str.substring(0,str.length()-1):str;
 //        System.out.println(str);
-        Set<String> set=new HashSet<String>();
-        set.add("ZT001");
-        set.add("ZT001");
-        for(String st1:set){
-            System.out.println(st1);
+
+//        Map<String,String> m1=new HashMap<String, String>();
+//        m1.put("a1","a1");
+//        m1.put("a2","a2");
+//        Map<String,String> m2=new HashMap<String, String>();
+//        m2.put("b1","b1");
+//        m2.put("b2","b2");
+//        List<Map<String,String>> list=new ArrayList<Map<String, String>>();
+//        list.add(m1);
+//        list.add(m2);
+//        Map<String,String> temp=null;
+//        for(Map<String,String> map:list){
+//            System.out.println(map);
+//        }
+        String a="11";
+        if("11".equals(a)){
+            if("12".equals(a)){
+                return;
+            }
+            System.out.println(a);
         }
     }
 

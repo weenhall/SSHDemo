@@ -1,0 +1,30 @@
+.attachment{
+    background-image: url("../images/accessory.png")!important;
+}
+.activity{
+    background-image: url("../images/activity.png")!important;
+}
+.add_fill{
+    background-image: url("../images/addition_fill.png")!important;
+}
+.delete_fill{
+    background-image: url("../images/delete_fill.png")!important;
+}
+.eit{
+    background-image: url("../images/eit.png")!important;
+}
+.fullsreen{
+    background-image: url("../images/fullscreen.png")!important;
+}
+.narrow{
+    background-image: url("../images/narrow.png")!important;
+}
+.refresh{
+    background-image: url("../images/refresh.png")!important;
+}
+.send{
+    background-image: url("../images/send.png")!important;
+}
+.undo{
+    background-image: url("../images/undo.png")!important;
+}

@@ -2,6 +2,7 @@ package com.ween.service;
 
 import com.ween.dao.HelloDao;
 import com.ween.entity.Users;
+import com.ween.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class HelloService {
     @Autowired
     private HelloDao helloDao;
 
-    public List<Users> getAllUsers(){
-        return helloDao.getAllUsers();
+    public List<Users> getAllUsers(Pager pager){
+        return helloDao.getAllUsers(pager);
     }
 }

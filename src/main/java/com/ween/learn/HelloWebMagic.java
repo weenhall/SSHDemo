@@ -10,7 +10,11 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * WebMagic spider demo
  */
 public class HelloWebMagic implements PageProcessor{
-    private Site site=Site.me().setRetryTimes(3).setSleepTime(100);
+
+    //抓取网站配置，编码，抓取间隔，重试次数
+    private Site site=Site.me().setRetryTimes(3).setSleepTime(1000);
+
+    //爬虫逻辑核心接口，在该方法编写抽取逻辑
     public void process(Page page) {
         page.addTargetRequests(page.getHtml().links().regex("(https://github\\.com/\\w+/\\w+)").all());
         page.putField("author", page.getUrl().regex("https://github\\.com/(\\w+)/.*").toString());
@@ -20,6 +24,7 @@ public class HelloWebMagic implements PageProcessor{
             page.setSkip(true);
         }
         page.putField("readme", page.getHtml().xpath("//div[@id='readme']/tidyText()"));
+        page.addTargetRequests(page.getHtml().links().regex("(https://github\\.com/[\\w\\-]+/[\\w\\-]+)").all());
     }
 
     public Site getSite() {

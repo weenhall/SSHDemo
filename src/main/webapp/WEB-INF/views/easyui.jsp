@@ -20,31 +20,154 @@
     <link rel="stylesheet" media="screen" href="/statics/easyui/themes/default/easyui.css">
     <link rel="stylesheet" media="screen" href="/statics/easyui/themes/icon.css">
 </head>
-<body>
-<div style="width:100%;height:10%;">
-    <p>Home Page</p>
+<body class="easyui-layout">
+<!--  页面上方区域     -->
+<div region="north" split="true"
+     style="height:60px;font-size: 26px;text-align: center;padding: 8px;background-color: #D1EEEE">easyui-layout
+    <button id="addTab">add tab</button>
 </div>
-<div id="wholePanel" class="easyui-layout" style="width:100%;height:90%;">
-    <div data-options="region:'west',title:'目录',split:true" style="width:100px;">
-        <ul id="treePanel" class="easyui-tree">
-            <li>
-                <span>Root</span>
-                <ul>
-                    <li>
-                        <span>节点1</span>
-                        <ul>
-                            <li><span><a href="#">1-11</a></span></li>
-                            <li><span>1-12</span></li>
-                            <li><span>1-13</span></li>
-                        </ul>
-                    </li>
-                    <li><span>1-2</span></li>
-                    <li><span>1-3</span></li>
-                </ul>
-            </li>
-        </ul>
+
+<!--  页面左边区域    -->
+<div region="west" style="width:180px" title="Hbase查询功能列表" split="true">
+    <!-- 树形结构的功能列表 -->
+    <ul id="tree"></ul>
+</div>
+
+<!--  页面中间内容（主面板）区域     -->
+<div region="center">
+    <div id="tabpanel" class="easyui-tabs" fit="true" border="false">
+        <div title="首页">
+            <table id="datagrid" class="easyui-datagrid" title="用户信息" style="width: 100%" data-options="singleSelect:true,fitColumns:true,url:'dataGridList',rownumbers:true,autoRowHeight:false,pagination:true">
+                <thead>
+                <tr>
+                    <th data-options="field:'uemail'">邮箱</th>
+                    <th data-options="field:'nickname'">昵称</th>
+                    <th data-options="field:'username'">姓名</th>
+                    <th data-options="field:'password'" >密码</th>
+                    <th data-options="field:'cardnum'">证件号码</th>
+                    <th data-options="field:'phonenum'">手机号码</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
-    <div data-options="region:'center',title:'面板'" style="padding:5px;background:#eee;"></div>
 </div>
 </body>
+<script>
+    function initPanel(){
+        //动态树形菜单数据
+        var treeData = [{
+            text: "Hbase查询功能列表",
+            children: [{
+                text: "具体数据查询",
+                children: [{
+                    text: "单一商品价格库存",
+                    attributes: {
+                        url: '<iframe width="100%" height="100%" frameborder="0"  src="https://www.baidu.com" style="width:100%;height:100%;margin:0px 0px;"></iframe>'
+                    }
+                }, {
+                    text: "单一商品价格库存2",
+                    attributes: {
+                        url: ''
+
+                    }
+                }
+                ]
+            }, {
+                text: "数据量查询",
+                children: [{
+                    text: "总量统计",
+                    attributes: {
+                        url: '<iframe width="100%" height="100%" frameborder="0"  src="https://www.baidu.com" style="width:100%;height:100%;margin:0px 0px;"></iframe>'
+                    }
+                }, {
+                    text: "总量统计2",
+                    attributes: {
+                        url: ''
+                    }
+                }
+                ]
+            }
+            ]
+        }];
+
+        //实例化树形菜单
+        $("#tree").tree({
+            data: treeData,
+            lines: true,
+            onClick: function (node) {
+                if (node.attributes) {
+                    Open(node.text, node.attributes.url);
+                }
+            }
+        });
+        //在右边center区域打开菜单，新增tab
+        function Open(text, url) {
+            if ($("#tabpanel").tabs('exists', text)) {
+                $('#tabpanel').tabs('select', text);
+            } else {
+                $('#tabpanel').tabs('add', {
+                    title: text,
+                    closable: true,
+                    content: url
+                });
+            }
+        }
+
+        //绑定tabs的右键菜单
+        $("#tabpanel").tabs({
+            onContextMenu: function (e, title) {
+                e.preventDefault();
+                $('#tabsMenu').menu('show', {
+                    left: e.pageX,
+                    top: e.pageY
+                }).data("tabTitle", title);
+            }
+        });
+
+        //实例化menu的onClick事件
+        $("#tabsMenu").menu({
+            onClick: function (item) {
+                CloseTab(this, item.name);
+            }
+        });
+
+        //几个关闭事件的实现
+        function CloseTab(menu, type) {
+            var curTabTitle = $(menu).data("tabTitle");
+            var tabs = $("#tabpanel");
+
+            if (type === "close") {
+                tabs.tabs("close", curTabTitle);
+                return;
+            }
+
+            var allTabs = tabs.tabs("tabs");
+            var closeTabsTitle = [];
+
+            $.each(allTabs, function () {
+                var opt = $(this).panel("options");
+                if (opt.closable && opt.title != curTabTitle && type === "Other") {
+                    closeTabsTitle.push(opt.title);
+                } else if (opt.closable && type === "All") {
+                    closeTabsTitle.push(opt.title);
+                }
+            });
+
+            for (var i = 0; i < closeTabsTitle.length; i++) {
+                tabs.tabs("close", closeTabsTitle[i]);
+            }
+        }
+    }
+    $(function () {
+        initPanel();
+        $('#addTab').click(function () {
+            $('#tabpanel').tabs('add', {
+                title: 'new tab',
+                closable: true,
+                content: 'a new body'
+            });
+        });
+    });
+</script>
 </html>

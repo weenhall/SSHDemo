@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wen on 2017/3/15.
@@ -19,4 +20,14 @@ public class HelloService {
     public List<Users> getAllUsers(Pager pager){
         return helloDao.getAllUsers(pager);
     }
+
+    public List<Users> getAllUsers(){
+        return helloDao.getAllUsers();
+    }
+
+    public Map<String,Object> doLogin(Users users) {
+       return helloDao.doLogin(users);
+    }
+
+
 }

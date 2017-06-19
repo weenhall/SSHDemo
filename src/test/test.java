@@ -1,3 +1,4 @@
+import com.ween.entity.Users;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -49,13 +50,8 @@ public class test {
 //        for(Map<String,String> map:list){
 //            System.out.println(map);
 //        }
-        String a="11";
-        if("11".equals(a)){
-            if("12".equals(a)){
-                return;
-            }
-            System.out.println(a);
-        }
+     String zth="1000 ";
+        System.out.println(zth.trim());
     }
 
     public static void testSwitch(int input) {
@@ -113,4 +109,5 @@ public class test {
         a = "bb".equals(a) ? "aa" : "";
         System.out.println(new Date().getTime() - bb.getTime());
     }
+
 }

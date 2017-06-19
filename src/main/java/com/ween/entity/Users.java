@@ -21,18 +21,20 @@ public class Users implements Serializable{
     private String password;
     private String cardnum;
     private String phonenum;
+    private Integer age;
 
     public Users(){
 
     }
 
-    public Users(String uemail,String nickname, String username, String password, String cardnum, String phonenum) {
+    public Users(String uemail,String nickname, String username, String password, String cardnum, String phonenum,Integer age) {
         this.uemail=uemail;
         this.nickname = nickname;
         this.username = username;
         this.password = password;
         this.cardnum = cardnum;
         this.phonenum = phonenum;
+        this.age=age;
     }
 
     public String getUemail() {
@@ -81,5 +83,13 @@ public class Users implements Serializable{
 
     public void setPhonenum(String phonenum) {
         this.phonenum = phonenum;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

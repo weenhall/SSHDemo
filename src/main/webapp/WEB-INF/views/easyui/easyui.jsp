@@ -37,10 +37,10 @@
 <div region="center">
     <div id="tabpanel" class="easyui-tabs" fit="true" border="false">
         <div title="首页">
-            <table id="datagrid" class="easyui-datagrid" title="用户信息" style="width: 100%" data-options="singleSelect:true,fitColumns:true,url:'dataGridList',rownumbers:true,autoRowHeight:false,pagination:true">
+            <table id="datagrid" class="easyui-datagrid" title="用户信息" style="width: 100%;height: 100%" data-options="singleSelect:true,fitColumns:true,url:'dataGridList',rownumbers:true,autoRowHeight:false,pagination:true">
                 <thead>
                 <tr>
-                    <th data-options="field:'uemail'">邮箱</th>
+                    <th data-options="field:'uemail',sortable:true">邮箱</th>
                     <th data-options="field:'nickname'">昵称</th>
                     <th data-options="field:'username'">姓名</th>
                     <th data-options="field:'password'" >密码</th>

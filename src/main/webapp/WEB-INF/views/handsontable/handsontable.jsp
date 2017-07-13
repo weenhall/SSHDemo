@@ -46,12 +46,14 @@
         {lot1: "Toyota", lot2: 30, lot3: "黑色", lot4: 80000, lot5: 82000},
         {lot1: "Honda", lot2: 30, lot3: "黄色", lot4: 67000, lot5: 70000}
     ];
+    //var colWidths = [100,50,50,50,50,50];//设置列宽
     var container = document.getElementById('example');
     var hot = new Handsontable(container, {
         data: data,
         columns: column,
         //自定义表头colHeaders:['悦达起亚','福特','沃尔沃','丰田','本田'],
         columnSorting: true,
+        //colWidths: colWidths,
         rowHeaders: true,
         colHeaders: true,
         contextMenu:true,

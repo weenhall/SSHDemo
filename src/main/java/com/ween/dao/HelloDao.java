@@ -2,6 +2,7 @@ package com.ween.dao;
 
 import com.ween.entity.Users;
 import com.ween.util.Pager;
+import com.ween.util.common.PagingInfo;
 import org.hibernate.Query;
 import org.hibernate.jdbc.ReturningWork;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,17 @@ public class HelloDao extends BasicDao {
         return list;
     }
 
-    public List<Users> getAllUsers() {
+    public Map<String,Object> getAllUsers(PagingInfo pagingInfo) {
+        Map<String,Object> resutlMap=new HashMap<String, Object>();
         String hql = "from Users user";
         Query query = getSessionFactory().getCurrentSession().createQuery(hql);
+        long count=query.list().size();
+        query.setFirstResult((pagingInfo.getPage()-1)*pagingInfo.getRows());
+        query.setMaxResults(pagingInfo.getRows());
         List<Users> list = query.list();
-        return list;
+        resutlMap.put("list",list);
+        resutlMap.put("count",count);
+        return resutlMap;
     }
 
     public Map<String,Object> doLogin(final Users users) {

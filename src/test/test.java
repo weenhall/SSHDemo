@@ -4,6 +4,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.varia.StringMatchFilter;
 import org.hibernate.annotations.SourceType;
 
 import java.math.BigDecimal;
@@ -13,45 +14,20 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class test {
     private static Logger logger = LogManager.getLogger("test");
 
     public static void main(String[] args) throws ParseException, InterruptedException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = sdf.parse("2017-05-01 09:24:57");
-        Date d2 = sdf.parse("2017-05-04 14:51:29");
-        String str = "";
-//        List<String> list = new ArrayList<String>();
-//        list.add("小明");
-//        list.add("小黄");
-//        list.add("小率");
-//        list.add("小红");
-//        for (int i = 0; i < list.size(); i++) {
-//            if (i > 2) {
-//                str = str.substring(0, str.length() - 1) + "等";
-//                break;
-//            }
-//            str = str + list.get(i) + ",";
-//        }
-//        str=str.endsWith(",")?str.substring(0,str.length()-1):str;
-//        System.out.println(str);
-
-//        Map<String,String> m1=new HashMap<String, String>();
-//        m1.put("a1","a1");
-//        m1.put("a2","a2");
-//        Map<String,String> m2=new HashMap<String, String>();
-//        m2.put("b1","b1");
-//        m2.put("b2","b2");
-//        List<Map<String,String>> list=new ArrayList<Map<String, String>>();
-//        list.add(m1);
-//        list.add(m2);
-//        Map<String,String> temp=null;
-//        for(Map<String,String> map:list){
-//            System.out.println(map);
-//        }
-     String zth="1000 ";
-        System.out.println(zth.trim());
+        Map<String, BigDecimal> map = new HashMap<String, BigDecimal>();
+        //map.put("11",BigDecimal.ZERO);
+        System.out.println("1");
+        for(String str:map.keySet()){
+            System.out.println(str);
+        }
+        System.out.println("2");
     }
 
     public static void testSwitch(int input) {
@@ -108,6 +84,39 @@ public class test {
         Date bb = new Date();
         a = "bb".equals(a) ? "aa" : "";
         System.out.println(new Date().getTime() - bb.getTime());
+    }
+
+    public static void testArrayList() {
+        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("subjectcode", "减013599");
+        map.put("ccode", "101");
+        map.put("zffs", "1");
+        list.add(map);
+        map = new HashMap<String, String>();
+        map.put("subjectcode", "减013599");
+        map.put("ccode", "102");
+        map.put("zffs", "1");
+        list.add(map);
+        map = new HashMap<String, String>();
+        map.put("subjectcode", "减013599");
+        map.put("ccode", "101");
+        map.put("zffs", "1");
+        list.add(map);
+        Map<String, String> m1 = null;
+        Map<String, String> m2 = null;
+        for (int i = 0; i < list.size(); i++) {
+            m1 = list.get(i);
+            for (int j = 0; j < list.size(); j++) {
+                if (i != j) {
+                    m2 = list.get(j);
+                    if (m1.get("ccode").equals(m2.get("ccode"))) {
+                        list.get(i).put("ccode", m2.get("ccode") + "1101");
+                    }
+                }
+            }
+        }
+        System.out.println(list);
     }
 
 }

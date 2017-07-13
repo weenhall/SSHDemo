@@ -10,9 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.ResultSet;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by wen on 2017/3/14.
@@ -32,6 +30,6 @@ public class HelloSpringMVC {
         List list = query.list();
         System.out.println(list);
         model.addAttribute("msg",list);
-        return "/hello";
+        return "bootstrap/hello";
     }
 }

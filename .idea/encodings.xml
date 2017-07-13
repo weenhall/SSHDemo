@@ -3,7 +3,13 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/lib/commons-dbutils-1.6.jar" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib/ojdbc-1.4.jar" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/db.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/project.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/404.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/404_msg.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/404_to_index.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/error.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/error_bg.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/error_cloud.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/statics/bootstrap/css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/statics/bootstrap/fonts" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/statics/bootstrap/js" charset="GBK" />

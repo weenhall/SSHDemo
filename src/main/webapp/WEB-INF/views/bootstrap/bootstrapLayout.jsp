@@ -21,7 +21,7 @@
     <script src="/statics/jquery/jquery-1.9.1.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap-paginator.js"></script>
-    <script language="javascript" type="text/javascript" src="../../statics/My97DatePicker/WdatePicker.js"></script>
+    <script language="javascript" type="text/javascript" src="../../../statics/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
 
     </style>
@@ -83,7 +83,7 @@
 //                url: "/home/getAllUsers",
 //                data: {
 //                    currentPage:page,
-//                    pageSize:2
+//                    page:2
 //                },
 //                dataType: "json",
 //                success: function (response) {

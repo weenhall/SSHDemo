@@ -52,7 +52,13 @@
         </c:forEach>
     </table>
     <ul class="pagination"></ul>
-    <p>hello${zth}</p>
+    <form action="/learn/importDemo" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleInputFile">文件导入</label>
+            <input type="file" id="exampleInputFile" name="file">
+        </div>
+        <button type="submit" class="btn btn-success">上传</button>
+    </form>
 </div>
 </body>
 </html>

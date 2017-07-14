@@ -1,0 +1,266 @@
+body {
+    background: white;
+}
+
+#loading {
+    width: 250px;
+    margin: 100px auto;
+    padding: 2px;
+    z-index: 20001;
+    height: auto;
+    background-color: darkgray;
+}
+
+#loading a {
+    color: #225588;
+}
+
+#loading .loading-indicator {
+    background: #e7e7e7;
+    color: #444;
+    font: bold 13px tahoma, arial, helvetica;
+    padding: 10px;
+    margin: 0;
+    height: auto;
+}
+
+#loading-msg {
+    font: normal 12px arial, tahoma, sans-serif;
+    color: #b9b900;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+}
+
+* html .clearfix {
+    zoom: 1;
+}
+
+*:first-child + html .clearfix {
+    zoom: 1;
+}
+
+.app-header {
+    background-image: url(../image/header-bg.png)
+}
+
+.app-header-title {
+    padding-left: 50px;
+    letter-spacing: 0.2em;
+    color: white;
+    font-size: 32px;
+    line-height: 82px;
+    font-family: "Microsoft YaHei";
+    text-shadow: 1px 1px 0 #4e691f;
+}
+
+.top_menu {
+    background: #006fbf;
+}
+
+.nav-app {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 7px;
+    font-size: 16px;
+    width: 64px;
+    height: 62px;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.nav-app:hover, .nav-app.active {
+    background: #1C84C6;
+    color: #f2f2f2;
+}
+
+.nav-app i {
+    display: block;
+    width: 64px;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.contact-group {
+    padding: 3px 3px 3px 3px;
+}
+
+.contact-group .title {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: ΢���ź�;
+    border-bottom: 1px solid #6593cf;
+    line-height: 20px;
+}
+
+.contact-group .contact {
+    padding: 3px;
+    width: 134px;
+}
+
+.contact-group .contact-wrap {
+    border: 1px solid #dddddd;
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 4px;
+}
+
+.contact-group .contact-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+.contact-group .icon {
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+
+.contact-group .delete {
+    width: 16px;
+    height: 16px;
+    float: left;
+    background-repeat: no-repeat;
+    margin: 8px 0 8px 0;
+    cursor: pointer;
+}
+
+.contact-group .text {
+    float: left;
+    width: 80px;
+    height: 32px;
+    text-align: center;
+    cursor: default;
+}
+
+.contact-group .x-view-over {
+    border: 1px solid #dddddd;
+    background-color: #efefef;
+    padding: 4px;
+}
+
+.contact-group .x-item-selected {
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    padding: 4px;
+}
+
+.contact-group .x-item-selected .contact {
+    background: transparent;
+}
+
+.contact-group .x-item-selected span {
+    color: #1A4D8F;
+}
+
+.contact-groups {
+    padding: 3px 3px 3px 3px;
+}
+
+.contact-groups .group {
+    padding: 3px;
+    width: 64px;
+    text-align: center;
+}
+
+.contact-groups .group-wrap {
+    border: 1px solid #dddddd;
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.contact-groups .icon {
+    width: 32px;
+    height: 32px;
+    margin-left: 13px;
+}
+
+.contact-groups .text {
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Microsoft YaHei, "΢���ź�";
+}
+
+.contact-groups .x-view-over {
+    border: 1px solid #dddddd;
+    background-color: #efefef;
+    padding: 4px;
+}
+
+.contact-groups .x-item-selected {
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    padding: 4px;
+}
+
+.contact-groups .x-item-selected .group {
+    background: transparent;
+}
+
+.contact-groups .x-item-selected span {
+    color: #1A4D8F;
+}
+
+.search-item {
+    height: 32px;
+}
+
+.search-item .text {
+    padding-left: 37px;
+}
+
+.search-item span {
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.x-nlg .x-grid-header-ct, .x-nlg .x-column-header {
+    background-repeat: repeat !important;
+}
+
+.text * {
+    font-size: 14px;
+    font-family: Microsoft YaHei, "΢���ź�";
+    line-height: 1.2em;
+}
+
+/**hide datepicker's today*/
+.x-hide-clip {
+    display: none;
+}
+
+.x-grid-cell-inner {
+    line-height: 20px;
+}
+
+.meeting-normal {
+
+}
+
+.meeting-canceled {
+    color: gray;
+}

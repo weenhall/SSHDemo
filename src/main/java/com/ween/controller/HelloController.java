@@ -1,15 +1,22 @@
 package com.ween.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.ween.common.response.Response;
 import com.ween.common.response.StoreResponse;
 import com.ween.entity.Users;
 import com.ween.service.HelloService;
 import com.ween.util.Pager;
 import com.ween.util.common.PagingInfo;
+import com.ween.util.poi.ExcelReadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
@@ -101,5 +108,24 @@ public class HelloController {
         storeResponse.setRows((List) map.get("list"));
         storeResponse.setTotal((Long) map.get("count"));
         return storeResponse.toString();
+    }
+
+    @RequestMapping(value = "/importDemo", method = RequestMethod.POST)
+    public void importDemo(@RequestParam("file") MultipartFile file, HttpServletResponse response) throws IOException {
+        Response result = new Response();
+        try {
+            ExcelReadUtil excelReadUtil = new ExcelReadUtil();
+            List<Map<String, Object>> list = excelReadUtil.ExcelContentRead(file);
+            result.addAttribute("list",list);
+            result.setSuccess(true);
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            response.setContentType("text/html;charset=UTF-8");
+            response.getWriter().print(JSON.toJSONString(result));
+        }
+
     }
 }

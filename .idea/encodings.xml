@@ -1,34 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/lib/commons-dbutils-1.6.jar" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/lib/ojdbc-1.4.jar" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/jxl/JxlExpExcel.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/jxl/JxlReadExcel.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/poi/CreateTemplate.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/poi/POIExcelRead.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/poi/POIExpExcel.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/poi/POIExpExcel_XSSF.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/poi/POIReadExcel.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ween/learn/poi/Person.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/project.properties" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/404.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/404_msg.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/404_to_index.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/error.css" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/error_bg.jpg" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/404/error_cloud.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/bootstrap/css" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/bootstrap/fonts" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/bootstrap/js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/easyloader.js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/jquery.easyui.min.js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/jquery.min.js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/locale" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/plugins" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/src" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/easyui/themes" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/jquery/jquery-1.9.1.min.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/test.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

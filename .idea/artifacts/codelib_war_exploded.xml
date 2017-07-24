@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="codelib:war exploded">
-    <output-path>$PROJECT_DIR$/../out/codelib/ween-code</output-path>
+    <output-path>$PROJECT_DIR$/target/ween-code</output-path>
     <properties id="ant-postprocessing">
       <options enabled="true" />
     </properties>
@@ -91,6 +91,9 @@
           <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
           <element id="library" level="project" name="Maven: net.sourceforge.jexcelapi:jxl:2.6.12" />
           <element id="library" level="project" name="Maven: jdom:jdom:1.0" />
+          <element id="library" level="project" name="Maven: com.thoughtworks.xstream:xstream:1.4.2" />
+          <element id="library" level="project" name="Maven: xmlpull:xmlpull:1.1.3.1" />
+          <element id="library" level="project" name="Maven: xpp3:xpp3_min:1.1.4c" />
         </element>
       </element>
       <element id="directory" name="META-INF">

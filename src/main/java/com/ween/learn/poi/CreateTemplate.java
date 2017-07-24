@@ -29,7 +29,7 @@ public class CreateTemplate {
 	 */
 	public static void main(String[] args) {
 		// 获取解析文件xml的路径
-		String path = System.getProperty("user.dir") + "/bin/student2.xml";
+		String path = System.getProperty("user.dir") + "/lib/student2.xml";
 		File file = new File(path);
 		SAXBuilder builder = new SAXBuilder();
 		try {

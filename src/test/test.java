@@ -1,4 +1,7 @@
 import com.ween.entity.Users;
+import com.ween.entity.wechat.SimpleMsg;
+import com.ween.learn.poi.Person;
+import com.ween.util.common.MathUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -8,12 +11,12 @@ import org.apache.log4j.varia.StringMatchFilter;
 import org.hibernate.annotations.SourceType;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,13 +24,16 @@ public class test {
     private static Logger logger = LogManager.getLogger("test");
 
     public static void main(String[] args) throws ParseException, InterruptedException {
-        Map<String, BigDecimal> map = new HashMap<String, BigDecimal>();
-        //map.put("11",BigDecimal.ZERO);
-        System.out.println("1");
-        for(String str:map.keySet()){
-            System.out.println(str);
-        }
-        System.out.println("2");
+//        Map<String, BigDecimal> map = new HashMap<String, BigDecimal>();
+//        map.put("11",BigDecimal.ZERO);
+//        System.out.println("1");
+//        for(String str:map.keySet()){
+//            System.out.println(str);
+//        }
+//        System.out.println((short)1);
+        Date d=new Date();
+        java.sql.Date date=new java.sql.Date(d.getTime());
+        System.out.println(date.getTime()+"--"+Long.valueOf("1500622872262"));
     }
 
     public static void testSwitch(int input) {
@@ -89,17 +95,17 @@ public class test {
     public static void testArrayList() {
         List<Map<String, String>> list = new ArrayList<Map<String, String>>();
         Map<String, String> map = new HashMap<String, String>();
-        map.put("subjectcode", "减013599");
+        map.put("subjectcode", "�??013599");
         map.put("ccode", "101");
         map.put("zffs", "1");
         list.add(map);
         map = new HashMap<String, String>();
-        map.put("subjectcode", "减013599");
+        map.put("subjectcode", "�??013599");
         map.put("ccode", "102");
         map.put("zffs", "1");
         list.add(map);
         map = new HashMap<String, String>();
-        map.put("subjectcode", "减013599");
+        map.put("subjectcode", "�??013599");
         map.put("ccode", "101");
         map.put("zffs", "1");
         list.add(map);
@@ -117,6 +123,23 @@ public class test {
             }
         }
         System.out.println(list);
+    }
+
+    public static boolean isNumeric(String input) {
+        StringBuilder sb = new StringBuilder();
+        if (StringUtils.isEmpty(input)) {
+            return false;
+        } else if (input.startsWith("-")) {//是否为负数??
+            sb.append(input.substring(1));
+        } else {
+            sb.append(input);
+        }
+        int index = sb.indexOf(".");
+        if (index > 0) {//是否为小数??
+            return StringUtils.isNumeric(sb.substring(0, index)) && StringUtils.isNumeric(sb.substring(index + 1));
+        } else {
+            return StringUtils.isNumeric(sb.toString());
+        }
     }
 
 }

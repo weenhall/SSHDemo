@@ -261,7 +261,11 @@
       <artifactId>jdom</artifactId>
       <version>1.0</version>
     </dependency>
-
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.2</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>ween-code</finalName>

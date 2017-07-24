@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.ween.common.response.Response;
 import com.ween.common.response.StoreResponse;
 import com.ween.entity.Users;
+import com.ween.entity.wechat.SimpleMsg;
 import com.ween.service.HelloService;
 import com.ween.util.Pager;
+import com.ween.util.WeChatUtils;
 import com.ween.util.common.PagingInfo;
 import com.ween.util.poi.ExcelReadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
@@ -127,5 +130,49 @@ public class HelloController {
             response.getWriter().print(JSON.toJSONString(result));
         }
 
+    }
+
+    @RequestMapping(value = "/wechatTest",method = RequestMethod.GET)
+    @ResponseBody
+    public void wechatTest(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String signature=request.getParameter("signature");
+        String timestamp=request.getParameter("timestamp");
+        String nonce=request.getParameter("nonce");
+        String echostr=request.getParameter("echostr");
+        PrintWriter out=response.getWriter();
+        if(helloService.checkSignature(signature,timestamp,nonce)){
+            out.print(echostr);
+        }
+    }
+
+    @RequestMapping(value = "/wechatTest",method = RequestMethod.POST)
+    @ResponseBody
+    public void wechatSimpleMsg(HttpServletRequest request,HttpServletResponse response){
+        try {
+            //request.setCharacterEncoding("UTF-8");
+            response.setContentType("text/xml;charset=UTF-8");
+            PrintWriter out=response.getWriter();
+            Map<String,String> map= WeChatUtils.xmlToMap(request);
+            String toUserName=map.get("ToUserName");
+            String fromUserName=map.get("FromUserName");
+            String msgType=map.get("MsgType");
+            String content=map.get("Content");
+
+            String message=null;
+            if("text".equals(msgType)){
+                SimpleMsg simpleMsg=new SimpleMsg();
+                simpleMsg.setFromUserName(fromUserName);
+                simpleMsg.setToUserName(toUserName);
+                simpleMsg.setMsgType("text");
+                simpleMsg.setCreateTime(new Date().getTime());
+                simpleMsg.setContent("你输入的是:"+content);
+                message=WeChatUtils.mapToXml(simpleMsg);
+                System.out.println(message);
+            }
+            out.print(message);
+            //out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

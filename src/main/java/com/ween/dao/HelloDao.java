@@ -1,5 +1,6 @@
 package com.ween.dao;
 
+import com.ween.entity.AutoField;
 import com.ween.entity.Users;
 import com.ween.util.Pager;
 import com.ween.util.common.PagingInfo;
@@ -57,5 +58,12 @@ public class HelloDao extends BasicDao {
                 return map;
             }
         });
+    }
+
+    public List<AutoField> getAutoFields() {
+        String hql = "from AutoField autoField";
+        Query query = getSessionFactory().getCurrentSession().createQuery(hql);
+        List<AutoField> list = query.list();
+        return list;
     }
 }

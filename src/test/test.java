@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.varia.StringMatchFilter;
 import org.hibernate.annotations.SourceType;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.text.DecimalFormat;
@@ -30,10 +31,11 @@ public class test {
 //        for(String str:map.keySet()){
 //            System.out.println(str);
 //        }
-//        System.out.println((short)1);
-        Date d=new Date();
-        java.sql.Date date=new java.sql.Date(d.getTime());
-        System.out.println(date.getTime()+"--"+Long.valueOf("1500622872262"));
+//        System.out.println((short)1)
+        Map<String,Double> map=new HashMap<String, Double>();
+        map.put("a",0.3);
+       BigDecimal aa=new BigDecimal(map.get("a"));
+        System.out.println(aa);
     }
 
     public static void testSwitch(int input) {

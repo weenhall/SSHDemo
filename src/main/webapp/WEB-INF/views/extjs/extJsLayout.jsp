@@ -84,7 +84,7 @@
 
         var viewport = Ext.create('Ext.container.Viewport', {
             layout: 'border',
-            items: [westPanel,{
+            items: [westPanel, {
                 xtype: 'tabpanel',
                 region: 'center',
                 autoScroll: true,
@@ -92,9 +92,17 @@
                     xtype: 'panel',
                     region: 'center',
                     title: '首页',
-                    html:'index page'
+                    forceFit:true,
+                    html: 'index page',
+                    layout: 'border',
+                    items: {
+                        xtype: 'htmleditor',
+                        enableColors: false,
+                        enableAlignments: false,
+                        region:'center'
+                    }
                 }]
-            },northPanel]
+            }, northPanel]
         });//viewport
 
     });

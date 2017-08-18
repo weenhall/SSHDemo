@@ -3,6 +3,7 @@ package com.ween.controller;
 import com.alibaba.fastjson.JSON;
 import com.ween.common.response.Response;
 import com.ween.common.response.StoreResponse;
+import com.ween.entity.AutoField;
 import com.ween.entity.Users;
 import com.ween.entity.wechat.SimpleMsg;
 import com.ween.service.HelloService;
@@ -49,7 +50,7 @@ public class HelloController {
         pager.setPageSize(10);
         List<Users> list = helloService.getAllUsers(pager);
         model.addAttribute("msg", list);
-        return "handsontable/handsontable";
+        return "handsontable/AutoFieldTable";
     }
 
     @RequestMapping(value = "/easyuiLayout", method = RequestMethod.GET)
@@ -67,10 +68,20 @@ public class HelloController {
         return "extjs/extJsLayout";
     }
 
+    @RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
+    public String fileUpload(Model model) {
+        return "jquery-fileupload";
+    }
+
+    @RequestMapping(value = "/extjs", method = RequestMethod.GET)
+    public String extjsView(Model model) {
+        return "extjs/extJsView";
+    }
+
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
-        return "/login";
+        return "/statics/jquery/fileupload/login.jsp";
     }
 
     @RequestMapping(value = "/dologin", method = RequestMethod.POST)
@@ -81,21 +92,27 @@ public class HelloController {
 
     @RequestMapping("/testMultiThread")
     public void testMultiThread(@RequestParam String user) {
-        //使用lock或者synchronized
-        if (lock.isLocked()) {
-            System.out.println("当前已有进程");
-            return;
-        }
-        lock.lock();
+        //使用lock
+//        if (lock.isLocked()) {
+//            System.out.println("当前已有进程");
+//            return;
+//        }
+//        lock.lock();
+//        try {
+//            for (int i = 0; i < 5; i++) {
+//                Thread.sleep(1000);
+//                System.out.println(user);
+//            }
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } finally {
+//            lock.unlock();
+//        }
+        //使用synchronized
         try {
-            for (int i = 0; i < 5; i++) {
-                Thread.sleep(1000);
-                System.out.println(user);
-            }
+            helloService.testMultiThread(user);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            lock.unlock();
         }
     }
 
@@ -174,5 +191,15 @@ public class HelloController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @RequestMapping(value = "/getAutoFields", method = RequestMethod.GET)
+    @ResponseBody
+    public String getAutoFields() {
+        Response response=new Response();
+        List<AutoField> list = helloService.getAutoFields();
+        response.setSuccess(true);
+        response.addAttribute("list",list);
+        return response.toString();
     }
 }

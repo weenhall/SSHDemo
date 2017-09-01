@@ -23,8 +23,15 @@ public class HelloService {
     @Autowired
     private HelloDao helloDao;
 
-    public List<Users> getAllUsers(Pager pager) {
-        return helloDao.getAllUsers(pager);
+    public List<Users> getAllUsers(Pager pager,String content) {
+        return helloDao.getAllUsers(pager,content);
+    }
+
+    public List<Users> getUsersByName(String content) {
+        Pager pager=new Pager();
+        pager.setCurrentPage(1);
+        pager.setPageSize(5);
+        return helloDao.getAllUsers(pager,content);
     }
 
     public Map<String, Object> getAllUsers(PagingInfo pagingInfo) {

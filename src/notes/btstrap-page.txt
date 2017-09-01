@@ -1,0 +1,49 @@
+快速入门
+1.引入boostrap.css,jquery,bootstrap-paginator这三个文件
+2.<div id="test"></div>
+  <script>
+     var option={
+         curentPage:1,
+         totalPages:5,
+         numberOfPages:5
+     }
+     $("#test").bootstrapPaginator(options);
+  </script>
+
+组件配置
+1.参数
+  参数                    类型                默认值              描述
+  size                    string              "normal"            组件的显示大小,可选值:mini,small,normal,large
+  aligment                string               "left"             组件对齐方式,可选值:left,center,right
+  itemContainerClass      function                                入参:type,page,current
+                                                                  type为按钮类型:first,prev,page,next,last
+                                                                  page为该按钮所属第几页
+                                                                  current指示整个控件的当前页是第几页
+  currentPage              number                1                设置当前页
+  numberOfPages            number                5                页面上按钮显示数量
+  totalPages               number                1                总页数
+  pageUrl                  function                               为组件上的每个按钮添加超链
+                                                                  入参:type,page,current
+  shouldShowPage           boolean/function      true             设置组件上的每个按钮是否显示
+                                                                  入参:type,page,current
+  itemsTexts               function                               配置按钮的别名
+                                                                  入参:type,page,current
+                                                                  如first->首页,last->尾页
+  tooltipTitles            function                               设置操作按钮的title属性
+                                                                  入参:type,page,current
+  useBootstrapTooltip      boolean               false            设置是否使用Bootstrap内置的tooltip,如果使用，则需要引入bootstrap-tooltip.js插件
+  bootstrapTooltipOptions  object                                 Default:{
+                                                                   animation:true,
+                                                                   html:true,
+                                                                   placement:'top',
+                                                                   selector:false,
+                                                                   title:"",
+                                                                   container:false
+                                                                   }
+                                                                   当参数useBootstrapTooltip为true时，会将该对象传给Bootstrap的bootstrap-tooltip.js插件
+  onPageClicked             function                               为操作按钮绑定click事件。回调函数的参数：event, originalEvent, type,page
+  onPageChanged             function                               为操作按钮绑定页码改变事件，回调函数的参数：event, oldPage, newPage
+
+
+
+

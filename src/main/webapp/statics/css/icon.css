@@ -28,3 +28,12 @@
 .undo{
     background-image: url("../images/undo.png")!important;
 }
+.feedback_fill{
+    background-image: url("../images/feedback_fill.png")!important;
+}
+.label{
+    background-image: url("../images/label.png")!important;
+}
+.offline_fill{
+    background-image: url("../images/offline_fill.png")!important;
+}

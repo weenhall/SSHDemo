@@ -2,6 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/fontawesome/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/fontawesome/fonts" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/fontawesome/less" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/statics/fontawesome/scss" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/statics/jquery/fileupload/jquery.fileupload.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/statics/jquery/fileupload/jquery.iframe-transport.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/statics/jquery/fileupload/jquery.ui.widget.js" charset="GBK" />

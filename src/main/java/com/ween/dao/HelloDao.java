@@ -1,9 +1,11 @@
 package com.ween.dao;
 
 import com.ween.entity.AutoField;
+import com.ween.entity.QueryParam;
 import com.ween.entity.Users;
 import com.ween.util.Pager;
 import com.ween.util.common.PagingInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.jdbc.ReturningWork;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,15 @@ import java.util.Map;
  */
 @Repository
 public class HelloDao extends BasicDao {
-    public List<Users> getAllUsers(Pager pager) {
-        String hql = "from Users user";
-        Query query = getSessionFactory().getCurrentSession().createQuery(hql);
+    public List<Users> getAllUsers(Pager pager,String content) {
+        StringBuilder hql=new StringBuilder("from Users user ");
+        Map<String,Object> paramMap=new HashMap<String, Object>();
+        if(StringUtils.isNotEmpty(content)){
+            hql.append("where user.nickname like :a");
+            paramMap.put("a",content+"%");
+        }
+        hql.append(" order by user.uemail");
+        Query query=initQueryParam(hql.toString(),paramMap);
         query.setFirstResult(pager.getCurrentPage());
         query.setMaxResults(pager.getPageSize());
         List<Users> list = query.list();

@@ -24,6 +24,13 @@ Ext.define('com.ween.attfile.FileGrid', {
                 }
             }
         });
+        var btn=Ext.create('Ext.Button', {
+            text: 'Click me',
+            glyph:'xf011@FontAwesome',
+            handler: function() {
+                alert('You clicked the button!');
+            }
+        });
         this.columns = [{
             text: '文件名称',
             width: 100,

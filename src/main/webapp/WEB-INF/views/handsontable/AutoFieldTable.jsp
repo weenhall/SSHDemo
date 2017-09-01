@@ -95,7 +95,7 @@
         manualRowResize: true,
         formulas: true,
         autoRowSize: true,
-        autoColSize:true,
+        autoColumnSize:true,
         contextMenu:true,
         mergeCells: [
             {row: 0, col: 0, rowspan: 2, colspan: 1},//序号

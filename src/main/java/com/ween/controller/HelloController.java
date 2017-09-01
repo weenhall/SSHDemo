@@ -36,11 +36,21 @@ public class HelloController {
 
     ReentrantLock lock = new ReentrantLock();
 
-    @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
-    public String getAllUsers(Model model, Pager pager) {
-        List<Users> list = helloService.getAllUsers(pager);
+    @RequestMapping(value = "/getAllUsers",method = RequestMethod.GET)
+    public String getAllUsers(Model model, Pager pager,String content) {
+        List<Users> list = helloService.getAllUsers(pager,content);
         model.addAttribute("msg", list);
         return "bootstrap/hello";
+    }
+
+    @RequestMapping(value = "/getUsersByName",method = RequestMethod.GET)
+    @ResponseBody
+    public String getUsersByName(String content){
+        Response response=new Response();
+        List<Users> list = helloService.getUsersByName(content);
+        response.setSuccess(true);
+        response.addAttribute("data",list);
+        return response.toString();
     }
 
     @RequestMapping(value = "/showHandSonTable", method = RequestMethod.GET)
@@ -48,7 +58,7 @@ public class HelloController {
         Pager pager = new Pager();
         pager.setCurrentPage(1);
         pager.setPageSize(10);
-        List<Users> list = helloService.getAllUsers(pager);
+        List<Users> list = helloService.getAllUsers(pager,"");
         model.addAttribute("msg", list);
         return "handsontable/AutoFieldTable";
     }

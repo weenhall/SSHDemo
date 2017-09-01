@@ -18,18 +18,21 @@
     <meta name="author" content="">
     <title>HomePage</title>
     <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/statics/css/loading.css">
     <script src="/statics/jquery/jquery-1.9.1.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap-paginator.js"></script>
     <script language="javascript" type="text/javascript" src="../../../statics/My97DatePicker/WdatePicker.js"></script>
-    <style type="text/css">
-
-    </style>
 </head>
 <body>
 <div class="container">
-    <h1 align="center">Say Hello</h1>
-    <table class="table table-hover table-bordered">
+    <h1 align="center">this is a table</h1>
+    <div class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" id="searchfield" name="content" placeholder="Search in here"
+               aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="searchFun()">Search</button>
+    </div>
+    <table class="table table-hover table-bordered" id="dataShow">
         <tr class="success">
             <th>邮箱</th>
             <th>用户名</th>
@@ -51,25 +54,27 @@
             </tr>
         </c:forEach>
     </table>
+    <div><p id="emptyText"></p></div>
     <ul class="pagination"></ul>
     <form action="/learn/importDemo" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputFile">文件导入</label>
             <input type="file" id="exampleInputFile" name="file">
+            <button type="submit" class="btn btn-success">上传</button>
         </div>
-        <button type="submit" class="btn btn-success">上传</button>
     </form>
 </div>
 </body>
 </html>
 <script>
     var options = {
-        currentPage:1, //设置当前页，默认起始页为第一页
-        totalPages:'5', //总页数
-        numberOfPages:5, //设置控件显示的页码数,跟后台计算出来的总页数没多大关系
-        bootstrapMajorVersion:3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
-        useBootstrapTooltip:'true',//是否显示tip提示框
-        itemTexts:function(type,page, current){//文字翻译
+        size: "normal",
+        alignment: "center",
+        currentPage: 1,
+        numberOfPages: 5,//按钮显示数量
+        totalPages: 5, //总页数
+        bootstrapMajorVersion: 3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
+        itemTexts: function (type, page, current) {
             switch (type) {
                 case "first":
                     return "首页";
@@ -83,23 +88,37 @@
                     return page;
             }
         },
-        onPageClicked:function(event,originalEvent,type,page){
-//            $.ajax({
-//                type: 'get',
-//                url: "/home/getAllUsers",
-//                data: {
-//                    currentPage:page,
-//                    page:2
-//                },
-//                dataType: "json",
-//                success: function (response) {
-//
-//                }
-//            });
-
+        onPageClicked: function (event, originalEvent, type, page) {
         }
     };
-    $(document).ready(function () {
-        $(".pagination").bootstrapPaginator(options);
-    });
+    $(".pagination").bootstrapPaginator(options);
+
+    function reload(data) {
+        $("#dataShow tr:not(:first)").remove();
+        for (var i = 0; i < data.length; i++) {
+            var row = '<tr><td>' + data[i]['uemail'] + '</td><td>' + data[i]['username'] + '</td><td>' + data[i]['nickname'] + '</td><td>' + data[i]['password'] + '</td><td>' + data[i]['phonenum'] + '</td><td>' + data[i]['cardname'] + '</td><td><input type="text" class="Wdate" placeholder="如：1990-01-01" onClick="WdatePicker() "></td></tr>';
+            $('#dataShow').append(row);
+        }
+    }
+
+    function searchFun() {
+        var content = $('#searchfield').val();
+        $.ajax({
+            type: 'GET',
+            url: "/learn/getUsersByName",
+            data: {
+                content: content
+            },
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    debugger;
+                    reload(response.attributes.data);
+                } else {
+                    alert(response.message);
+                }
+            }
+        });
+    }
+
 </script>

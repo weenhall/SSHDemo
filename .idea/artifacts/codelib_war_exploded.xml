@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="codelib:war exploded">
-    <output-path>$PROJECT_DIR$/target/ween-code</output-path>
+    <output-path>$PROJECT_DIR$/../out/codelib</output-path>
     <properties id="ant-postprocessing">
       <options enabled="true" />
     </properties>

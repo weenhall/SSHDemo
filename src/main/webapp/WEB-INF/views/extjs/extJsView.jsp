@@ -16,6 +16,7 @@
 <body>
 <script>
     Ext.onReady(function () {
+        Ext.Loader.setPath('Ext.ux','/statics/extjs/ux');
         Ext.Loader.setPath('com.ween','/statics/jsfile');
         Ext.setGlyphFontFamily('FontAwesome');//简化ExtJS glyph的值
         <%--Ext.tip.QuickTipManager.init();--%>

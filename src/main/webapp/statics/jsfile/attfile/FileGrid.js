@@ -4,7 +4,7 @@
 Ext.define('com.ween.attfile.FileGrid', {
     extend: 'Ext.grid.Panel',
     autoScroll: true,
-    requires: ['com.ween.attfile.AttFile'],
+    requires: ['com.ween.attfile.AttFile','Ext.ux.DateTimeField'],
     initComponent: function () {
         this.store = Ext.create('Ext.data.Store', {
             model: 'com.ween.attfile.AttFile',
@@ -20,7 +20,7 @@ Ext.define('com.ween.attfile.FileGrid', {
             autoLoad: true,
             listeners:{
                 load:function(store,records){
-                    debugger;
+                    //debugger;
                 }
             }
         });
@@ -67,6 +67,34 @@ Ext.define('com.ween.attfile.FileGrid', {
                 meta.style = "white-space:normal;";
                 return value;
             }
+        }];
+        this.tbar = [{
+            text: '添加合同',
+            handler: function () {
+                var form=Ext.create('Ext.form.Panel', {
+                    title: 'Contact Info',
+                    width: 300,
+                    bodyPadding: 10,
+                    items: [{
+                        xtype: 'datetimefield',
+                        name: 'name',
+                        fieldLabel: 'Name',
+                        allowBlank: false  // requires a non-empty value
+                    }, {
+                        xtype: 'textfield',
+                        name: 'email',
+                        fieldLabel: 'Email Address'
+                    }]
+                });
+                Ext.create('Ext.window.Window', {
+                    title: 'Hello',
+                    height: 200,
+                    width: 400,
+                    layout: 'fit',
+                    items: form
+                }).show();
+            },
+            scope: this
         }];
         this.callParent(arguments);
     }

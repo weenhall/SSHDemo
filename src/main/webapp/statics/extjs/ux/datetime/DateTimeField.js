@@ -70,7 +70,7 @@
 Ext.define('Ext.ux.DateTimeField', {
     extend:'Ext.form.field.Date',
     alias: 'widget.datetimefield',
-    requires: ['Ext.ux.DateTimePicker'],
+    requires: ['Ext.ux.datetime.DateTimePicker'],
     alternateClassName: ['Ext.form.DateTimeField', 'Ext.form.DateTime'],
 
     //<locale>

@@ -18,4 +18,14 @@ public class FileService {
     public List<AttFile> AttFileList(String mainId){
         return fileDao.AttFileList(mainId);
     }
+
+    public void addFiles(List<AttFile> list) {
+        for(AttFile attFile:list){
+            fileDao.getSessionFactory().getCurrentSession().saveOrUpdate(attFile);
+        }
+    }
+
+    public void deleteFileById(String id){
+       fileDao.getSession().delete(fileDao.getSession().get(AttFile.class,id));
+    }
 }

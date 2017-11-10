@@ -10,6 +10,9 @@
 .delete_fill{
     background-image: url("../images/delete_fill.png")!important;
 }
+.delete_fill_16{
+    background-image: url("../images/delete-fill_16.png")!important;
+}
 .eit{
     background-image: url("../images/eit.png")!important;
 }
@@ -36,4 +39,7 @@
 }
 .offline_fill{
     background-image: url("../images/offline_fill.png")!important;
+}
+.adobe_read{
+    background-image: url("../images/adoberead.png")!important;
 }

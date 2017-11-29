@@ -20,7 +20,7 @@ public class BasicDao {
     @Autowired
     protected SessionFactory sessionFactory;
     public SessionFactory getSessionFactory(){
-        return sessionFactory;
+        return this.sessionFactory;
     }
     public void setSessionFactory(SessionFactory sessionFactory){
         this.sessionFactory=sessionFactory;

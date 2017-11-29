@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -86,6 +88,16 @@ public class HelloController {
     @RequestMapping(value = "/extjs", method = RequestMethod.GET)
     public String extjsView(Model model) {
         return "extjs/extJsView";
+    }
+
+    @RequestMapping(value = "/pageIndex")
+    public String pageIndex(Model model){
+        return "pageoffice/pageIndex";
+    }
+
+    @RequestMapping(value = "/pageWord")
+    public String pageWord(Model model){
+        return "pageoffice/Word";
     }
 
 
@@ -191,7 +203,7 @@ public class HelloController {
                 simpleMsg.setFromUserName(fromUserName);
                 simpleMsg.setToUserName(toUserName);
                 simpleMsg.setMsgType("text");
-                simpleMsg.setCreateTime(new Date().getTime());
+                simpleMsg.setCreateTime(System.currentTimeMillis());
                 simpleMsg.setContent("你输入的是:"+content);
                 message=WeChatUtils.mapToXml(simpleMsg);
                 System.out.println(message);

@@ -8,6 +8,30 @@ Ext.define('com.ween.attfile.FileGrid', {
     viewConfig:{
       enableTextSelection:true
     },
+    cellTip:true,
+    listeners:{
+        afterRender: function () {
+           // this.callParent(arguments);
+            if (!this.cellTip) {
+                return;
+            }
+            var view = this.getView();
+            this.tip = new Ext.ToolTip({
+                target: view.el,
+                delegate: '.x-grid-cell-inner',
+                trackMouse: true,
+                renderTo: document.body,
+                listeners: {
+                    beforeshow: function updateTipBody(tip) {
+                        if (Ext.isEmpty(tip.triggerElement.innerText)) {
+                            return false;
+                        }
+                        tip.update(tip.triggerElement.innerText);
+                    }
+                }
+            });
+        }
+    },
     initComponent: function () {
         this.store = Ext.create('Ext.data.Store', {
             model: 'com.ween.attfile.AttFile',
@@ -41,6 +65,7 @@ Ext.define('com.ween.attfile.FileGrid', {
             sortable: true,
             renderer: function (value, meta, record) {
                 meta.style = "white-space:normal;";
+                //meta.tdAttr='data-qtip="' + Ext.String.htmlEncode(value) + '"';
                 return value;
             }
         }, {

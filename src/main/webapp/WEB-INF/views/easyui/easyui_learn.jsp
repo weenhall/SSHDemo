@@ -14,11 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="/statics/easyui/jquery.min.js"></script>
-    <script src="/statics/easyui/jquery.easyui.min.js"></script>
-    <script src="/statics/easyui/locale/easyui-lang-zh_CN.js"></script>
-    <link rel="stylesheet" media="screen" href="/statics/easyui/themes/default/easyui.css">
-    <link rel="stylesheet" media="screen" href="/statics/easyui/themes/icon.css">
+    <script src="${pageContext.request.contextPath}/statics/easyui/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/statics/easyui/jquery.easyui.min.js"></script>
+    <script src="${pageContext.request.contextPath}/statics/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/statics/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/statics/easyui/themes/icon.css">
 </head>
 <body>
 </body>

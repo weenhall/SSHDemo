@@ -17,11 +17,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>HomePage</title>
-    <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/statics/jquery/jquery-1.9.1.min.js"></script>
-    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/statics/bootstrap/js/bootstrap-paginator.js"></script>
-    <script language="javascript" type="text/javascript" src="../../../statics/My97DatePicker/WdatePicker.js"></script>
+    <link href="${pageContext.request.contextPath}/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/statics/jquery/jquery-1.9.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/statics/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/statics/bootstrap/js/bootstrap-paginator.js"></script>
+    <script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/statics/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
 
     </style>

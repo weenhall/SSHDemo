@@ -4,12 +4,12 @@
 <head>
     <title>${param["title"]}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
-    <link href="/statics/extjs/resources/css/ext-all-neptune.css" rel="stylesheet" type="text/css"/>
+    <link href="${pageContext.request.contextPath}/statics/extjs/resources/css/ext-all-neptune.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/statics/css/app.css" rel="stylesheet" type="text/css">
-    <link href="/statics/css/icon.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/statics/extjs/ext-all-debug.js"></script>
-    <script type="text/javascript" src="/statics/extjs/locale/ext-lang-zh_CN.js"></script>
+    <link href="${pageContext.request.contextPath}/statics/css/app.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/statics/css/icon.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/extjs/ext-all-debug.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/extjs/locale/ext-lang-zh_CN.js"></script>
     <%
         response.addHeader("Access-Control-Allow-Origin", "*");
     %>

@@ -22,8 +22,8 @@
 </head>
 <body>
 <!-- PageOffice.js文件一定要引用 -->
-<script type="text/javascript" src="/jquery.min.js"></script>
-<script type="text/javascript" src="/pageoffice.js" id="po_js_main"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/pageoffice.js" id="po_js_main"></script>
 <script type="text/javascript">
     function Save() {
         document.getElementById("PageOfficeCtrl1").WebSave();

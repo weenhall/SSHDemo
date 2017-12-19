@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="/statics/jquery/jquery-1.9.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/statics/bootstrap/css/bootstrap.min.css">
-    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/statics/handsontable/dist/handsontable.full.min.js"></script>
-    <link rel="stylesheet" media="screen" href="/statics/handsontable/dist/handsontable.full.min.css">
+    <script src="${pageContext.request.contextPath}/statics/jquery/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/statics/bootstrap/css/bootstrap.min.css">
+    <script src="${pageContext.request.contextPath}/statics/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/statics/handsontable/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/statics/handsontable/dist/handsontable.full.min.css">
 </head>
 <body>
 <div class="container">

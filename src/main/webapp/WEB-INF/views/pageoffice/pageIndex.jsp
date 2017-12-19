@@ -9,8 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript" src="/jquery.min.js"></script>
-    <script type="text/javascript" src="/pageoffice.js"  id="po_js_main"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/pageoffice.js"  id="po_js_main"></script>
 </head>
 <script>
     window.onload=function(){

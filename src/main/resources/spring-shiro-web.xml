@@ -4,13 +4,32 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
        default-lazy-init="true">
-
     <description>Shiro Configuration</description>
 
     <!-- 加载配置属性文件 -->
     <context:property-placeholder ignore-unresolvable="true" location="classpath:project.properties"/>
 
-
+    <!-- 安全认证过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/user/login"/>
+        <property name="successUrl" value="/index"/>
+        <property name="unauthorizedUrl" value="/user/login"/>
+        <property name="filterChainDefinitions">
+            <value>
+                <!--/learn/**=anon-->
+                /statics/** = anon
+                /userfiles/** = anon
+                /user/login = authc
+                /user/logout = logout
+                /act/rest/service/editor/** = perms[act:model:edit]
+                /act/rest/service/model/** = perms[act:model:edit]
+                /act/rest/service/** = user
+                /ReportServer/** = user
+                /** = authc
+            </value>
+        </property>
+    </bean>
 
     <!-- 定义Shiro安全管理配置 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -18,16 +37,31 @@
         <property name="cacheManager" ref="shiroCacheManager"/>
     </bean>
 
-    <bean id="systemAuthorizingRealm" class="com.ween.modules.DatabaseRealm">
+    <bean id="systemAuthorizingRealm" class="com.ween.modules.sys.SysRealm">
         <!--<property name="credentialsMatcher" ref="credentialsMatcher"></property>-->
     </bean>
 
     <!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,
         当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <constructor-arg name="name" value="platform.session.id"/>
+        <constructor-arg name="name" value="codelib.session.id"/>
     </bean>
 
+    <!-- 自定义Session存储容器 -->
+    <bean id="sessionDAO" class="com.ween.modules.sys.shiro.session.CacheSessionDAO">
+        <property name="sessionIdGenerator" ref="idGen"/>
+        <property name="activeSessionsCacheName" value="activeSessionsCache"/>
+        <property name="cacheManager" ref="shiroCacheManager"/>
+    </bean>
+
+    <bean id="sessionManager" class="com.ween.modules.sys.shiro.session.SessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="globalSessionTimeout" value="1800000"/>
+        <property name="sessionValidationInterval" value="120000"/>
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <property name="sessionIdCookieEnabled" value="true"/>
+    </bean>
 
     <!-- 定义授权缓存管理器 -->
     <!-- 	<bean id="shiroCacheManager" class="com.thinkgem.jeesite.common.security.shiro.cache.SessionCacheManager" /> -->
@@ -43,8 +77,10 @@
           depends-on="lifecycleBeanPostProcessor">
         <property name="proxyTargetClass" value="true"/>
     </bean>
+    <!-- 启用 IOC 容器中使用 shiro 的注解. 但必须在配置了 LifecycleBeanPostProcessor 之后才可以使用. -->
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
+
 
 </beans>

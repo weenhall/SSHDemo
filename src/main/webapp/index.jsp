@@ -8,9 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>HomePage</title>
-    <link href="statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="statics/jquery/jquery-1.9.1.min.js"></script>
-    <script src="statics/bootstrap/js/bootstrap.min.js"></script>
+    <link href="${pageContext.request.contextPath}statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}statics/jquery/jquery-1.9.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}statics/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -45,6 +45,7 @@
             <h3>Post Title  6</h3>
             <p>Lorem ipsum  dolor  sit amet ... </p>
         </div>
+        <div><a href="/user/logout"/>退出</div>
     </div>
 </div>
 

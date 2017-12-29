@@ -1,5 +1,5 @@
 package com.ween.common.response;
-import com.ween.util.common.JsonUtil;
+import com.ween.common.utils.JsonUtil;
 import java.util.HashMap;
 import java.util.Map;
 public class Response {

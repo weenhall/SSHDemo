@@ -34,22 +34,22 @@
     </div>
     <table class="table table-hover table-bordered" id="dataShow">
         <tr class="success">
-            <th>邮箱</th>
+            <th>ID</th>
             <th>用户名</th>
-            <th>昵称</th>
+            <th>姓名</th>
             <th>密码</th>
-            <th>手机</th>
+            <th>地址</th>
             <th>身份证</th>
-            <th>记录时间</th>
+            <th>邮箱</th>
         </tr>
         <c:forEach items="${msg}" var="person" varStatus="status">
             <tr>
-                <td>${person.uemail}</td>
+                <td>${person.id}</td>
                 <td>${person.username}</td>
-                <td>${person.nickname}</td>
+                <td>${person.personname}</td>
                 <td>${person.password}</td>
-                <td>${person.phonenum}</td>
-                <td>${person.cardnum}</td>
+                <td>${person.address}</td>
+                <td>${person.idenCard}</td>
                 <td><input type="text" class="Wdate" placeholder="如：1990-01-01" onClick="WdatePicker() "></td>
             </tr>
         </c:forEach>
@@ -96,7 +96,7 @@
     function reload(data) {
         $("#dataShow tr:not(:first)").remove();
         for (var i = 0; i < data.length; i++) {
-            var row = '<tr><td>' + data[i]['uemail'] + '</td><td>' + data[i]['username'] + '</td><td>' + data[i]['nickname'] + '</td><td>' + data[i]['password'] + '</td><td>' + data[i]['phonenum'] + '</td><td>' + data[i]['cardname'] + '</td><td><input type="text" class="Wdate" placeholder="如：1990-01-01" onClick="WdatePicker() "></td></tr>';
+            var row = '<tr><td>' + data[i]['id'] + '</td><td>' + data[i]['username'] + '</td><td>' + data[i]['personname'] + '</td><td>' + data[i]['password'] + '</td><td>' + data[i]['address'] + '</td><td>' + data[i]['idenCard'] + '</td><td><input type="text" class="Wdate" placeholder="如：1990-01-01" onClick="WdatePicker() "></td></tr>';
             $('#dataShow').append(row);
         }
     }
@@ -112,7 +112,6 @@
             dataType: "json",
             success: function (response) {
                 if (response.success) {
-                    debugger;
                     reload(response.attributes.data);
                 } else {
                     alert(response.message);

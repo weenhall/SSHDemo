@@ -17,6 +17,7 @@
 
         function showMask() {
             $("#mask").show();
+            setTimeout("hideMask()",5000);
         }
 
         function hideMask() {
@@ -33,7 +34,7 @@
             z-index: 1002;
             opacity: 0.5;
             -moz-opacity: 0.5;
-            width: 50px;
+            width:50px;
             height: 50px;
             display: none;
             child-align: middle;
@@ -45,7 +46,7 @@
 <h1 align="center"><a id="test">测试</a></h1>
 <i class="fa fa-cab">subway</i>
 <div id="mask" class="mask"><i class="fa fa-spinner fa-spin" style="margin-top: 20%;margin-left: 35%"></i><i
-        style="font-size: x-small;margin-left:15%">loading</i></div>
+        style="font-size: x-small;margin-left:15%">加载中</i></div>
 <button class="fa fa-calculator" onclick="showMask()">show</button>
 </body>
 </html>

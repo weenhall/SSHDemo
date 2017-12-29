@@ -1,4 +1,6 @@
 package com.ween.common.response;
+import com.ween.common.response.Response;
+
 import java.util.List;
 public class StoreResponse extends Response {
     private List<?> rows;

@@ -31,7 +31,7 @@
 <div region="west" style="width:180px" title="Hbase查询功能列表" split="true">
     <!-- 树形结构的功能列表 -->
     <ul id="tree"></ul>
-</div>
+</div>he
 
 <!--  页面中间内容（主面板）区域     -->
 <div region="center">
@@ -40,12 +40,12 @@
             <table id="datagrid" class="easyui-datagrid" title="用户信息" style="width: 100%;height: 100%" data-options="singleSelect:true,fitColumns:true,url:'dataGridList',rownumbers:true,autoRowHeight:false,pagination:true">
                 <thead>
                 <tr>
-                    <th data-options="field:'uemail',sortable:true">邮箱</th>
-                    <th data-options="field:'nickname'">昵称</th>
-                    <th data-options="field:'username'">姓名</th>
+                    <th data-options="field:'id',sortable:true">ID</th>
+                    <th data-options="field:'username'">用户名</th>
+                    <th data-options="field:'personname'">姓名</th>
                     <th data-options="field:'password'" >密码</th>
-                    <th data-options="field:'cardnum'">证件号码</th>
-                    <th data-options="field:'phonenum'">手机号码</th>
+                    <th data-options="field:'idenCard'">证件号码</th>
+                    <th data-options="field:'address'">地址</th>
                 </tr>
                 </thead>
             </table>

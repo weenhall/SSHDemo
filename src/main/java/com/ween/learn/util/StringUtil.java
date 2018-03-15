@@ -11,7 +11,9 @@ public class StringUtil {
         StringBuilder sb = new StringBuilder();
         if (StringUtils.isEmpty(input)) {
             return false;
-        } else if (input.startsWith("-")) {//是否为负数
+        } else if(input.startsWith("0")){
+            return false;
+        }else if (input.startsWith("-")) {//是否为负数
             sb.append(input.substring(1));
         } else {
             sb.append(input);

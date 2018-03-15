@@ -1,20 +1,29 @@
 
+import com.ween.common.utils.Encodes;
+import com.ween.learn.util.StringUtil;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.json.XML;
+import sun.security.provider.MD5;
+
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class test {
     private static Logger logger = LogManager.getLogger("test");
 
     public static void main(String[] args)  {
-        String msg="message=<?xml version=\"1.0\"?>\n" +
-                "<ufinterface roottag=\"voucheraddreturn\" docid=\"\" proc=\"add\" sender=\"u8\" receiver=\"001\" request-roottag=\"voucher\"><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"12\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"2\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"4\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"6\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"8\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"10\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"\" succeed=\"1\" dsc=\"凭证分录数据有错\" u8accounting_period=\"\" u8voucher_id=\"\"></item></ufinterface>\n";
-        xmlToJson(msg);
+        Pattern pattern = Pattern.compile("^[0-9a-zA-Z_]{1,}$");
+        Matcher matcher = pattern.matcher("ccode_name");
+        for(int i=0;i<50;i++){
+            System.out.println(matcher.matches());
+        }
     }
 
     public static void testSwitch(int input) {

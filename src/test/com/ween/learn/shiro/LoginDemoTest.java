@@ -17,6 +17,7 @@ import static sun.security.jgss.GSSUtil.login;
  * Created by wen on 2017/7/6.
  */
 public class LoginDemoTest {
+    @SuppressWarnings("deprecation")
     @Test
     public void testHelloWorld() {
         Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");

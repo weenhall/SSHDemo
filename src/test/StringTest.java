@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
  */
 public class StringTest {
 
+    @SuppressWarnings("deprecation")
     @Test
     public void test() throws Exception {
         String m = "hello,world";

@@ -123,8 +123,7 @@ public class test {
     }
 
     public static void xmlToJson(String msg){
-        String messnage="<?xml version=\"1.0\"?>\n" +
-                "<ufinterface roottag=\"voucheraddreturn\" docid=\"\" proc=\"add\" sender=\"u8\" receiver=\"001\" request-roottag=\"voucher\"><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"2\" succeed=\"1\" dsc=\"项目非法\" u8accounting_period=\"\" u8voucher_id=\"\"></item><item accounting_period=\"12\" voucher_type=\"记\" voucher_id=\"\" entry_id=\"\" succeed=\"1\" dsc=\"凭证分录数据有错\" u8accounting_period=\"\" u8voucher_id=\"\"></item></ufinterface>\n";
+        String messnage="";
         JSONObject xmlJSONobj= XML.toJSONObject(msg);
         org.json.JSONArray jsonArray= (org.json.JSONArray) xmlJSONobj.getJSONObject("ufinterface").get("item");
         String json=xmlJSONobj.toString(4);

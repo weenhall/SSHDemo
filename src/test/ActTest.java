@@ -60,7 +60,7 @@ public class ActTest {
 
     @Test
     public void activitiSpringIntegration(){
-        ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext(new String[]{"spring-context.xml","spring-activiti-context.xml"});
+        ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext(new String[]{"spring/spring-context.xml", "spring/spring-activiti-context.xml"});
         RepositoryService repositoryService= (RepositoryService) applicationContext.getBean("repositoryService");
         String deploymentId=repositoryService.createDeployment().addClasspathResource("act/test2.bpmn20.xml").deploy().getId();
     }

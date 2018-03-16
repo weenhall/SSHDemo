@@ -14,6 +14,7 @@ import java.io.*;
  * Created by wen on 2017/5/17.
  */
 public class CaptchaDown {
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) {
         DefaultHttpClient httpClient=new DefaultHttpClient();
         for(int i=0;i<10;i++){

@@ -20,6 +20,7 @@
                 <!--/learn/**=anon-->
                 /statics/** = anon
                 /userfiles/** = anon
+                /oauthCallback=anon
                 /user/login = authc
                 /user/logout = logout
                 /act/rest/service/editor/** = perms[act:model:edit]

@@ -14,41 +14,80 @@
         var ctx = '${pageContext.request.contextPath}'
     </script>
     <title>HomePage</title>
+    <link href="../../statics/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/statics/jquery/jquery-1.9.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/statics/bootstrap/js/bootstrap.min.js"></script>
     <title>Login</title>
+    <style>
+        @media screen and (max-width: 768px) {
+            .login {
+                /*border: 1px solid #ffffff;*/
+                margin: 100px auto;
+                padding: 20px;
+                width: 100%;
+            }
+        }
+        .login{
+            margin: 100px auto;
+            padding: 20px;
+            width: 700px;
+        }
+        .login-input{
+            margin: 0 auto;
+        }
+        .failed{
+            color: crimson;
+        }
+        body {
+            font-family: 'microsoft yahei', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /*background:grey;*/
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-<div style="width:100%;text-align:center;">
-    <div style="width:1005px; margin:0 auto; position:relative;">
-        <table width="1005" cellspacing="0" cellpadding="0" border="0" align="center">
-            <tbody>
-            <tr>
-                <td class="login_form">
-                    <form action="/user/login" method="post">
-                        <div class="loginform">
-                            <div>
-                                <label class="column">用户名</label>
-                                <input name="username" id="username" maxlength="100" type="text">
-                            </div>
-                            <div>
-                                <label class="column">密码</label>
-                                <input name="password" id="password" maxlength="100" type="password">
-                            </div>
-                            <div>${errorMsg}</div>
-                        </div>
+<div class="container">
+    <div class="login">
+    <div class="modal-body row login-input">
+        <form action="/user/login" method="post" class="form col-md-12 center-block form-group">
+            <div class="row">
+                <div class="form-group col-sm-6 col-xs-12">
+                    <div class="input-group">
+                            <span class="input-group-addon login-input-icon ">
 
-                        <div class="loginFormBtn">
-                            <button id="loginBtn" class="btn btn-main btn-login" tabindex="6" type="submit"
-                            >登&nbsp;&nbsp;录
-                            </button>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                                <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                        <input type="text" id="username" name="username" class="form-control login-input-edit "
+                               placeholder="请输入用户名" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-xs-12 ">
+                    <div class="input-group">
+                            <span class="input-group-addon login-input-icon">
+                                 <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                        <input type="password" id="password" name="password" class="form-control login-input-edit"
+                               placeholder="请输入密码" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-xs-12 failed">${errorMsg}</div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-xs-12 ">
+                    <button class="btn btn-sm btn-info col-sm-2" type="submit">登录</button>
+                    <a  href="https://github.com/login/oauth/authorize?client_id=46c91882fa768f05b4e7&state=0&redirect_uri=http://127.0.0.1:8080/oauthCallback" class="btn btn-sm col-sm-2"><i class="fab fa-github-square fa-2x"></i></a>
+                </div>
+            </div>
+        </form>
+    </div>
     </div>
 </div>
 </body>

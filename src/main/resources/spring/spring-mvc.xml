@@ -13,7 +13,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!--配置扫描的包-->
-    <context:component-scan base-package="com.ween" use-default-filters="false">
+    <context:component-scan base-package="com.ween.modules" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <mvc:resources location="/statics/" mapping="/statics/**" cache-period="31556926"/>

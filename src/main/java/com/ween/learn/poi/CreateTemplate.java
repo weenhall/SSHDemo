@@ -134,6 +134,7 @@ public class CreateTemplate {
 	}
 
 	//设置单元格样式
+	@SuppressWarnings("deprecation")
 	private static void setType(HSSFWorkbook wb, HSSFCell cell, Element td) {
 		Attribute typeAttr=td.getAttribute("type");
 		String type=typeAttr.getValue();

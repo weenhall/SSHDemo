@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function loadXMLDoc(name) {
+            var xhttp;
+            if (window.XMLHttpRequest) {
+                xhttp = new XMLHttpRequest();
+            } else {
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.open("GET", name, false);
+            xhttp.send("");
+            return xhttp.responseXML;
+        }
+
+        var xml = loadXMLDoc("../../statics/xmls/books.xml");
+        var cPath = "/bookstore/book";
+        var tPath = "/bookstore/book/title";
+        //code for ie
+        if (window.ActiveXObject) {
+            var tNodes = xml.selectNodes(tPath);
+            var cNodes = xml.selectNodes(cPath);
+            for (i = 0; i < tNodes.length; i++) {
+                document.write("title-" + tNodes[i].childNodes[0].nodeValue);
+                document.write("<br />");
+            }
+            for (i = 0; i < cNodes.length; i++) {
+                document.write("category-" + cNodes[i].nodeValue);
+                document.write("<br />");
+            }
+        } else if (document.implementation && document.implementation.createDocument) {
+            var tNodes = xml.evaluate(tPath, xml, null, XPathResult.ANY_TYPE, null);
+            var cNodes = xml.evaluate(cPath, xml, null, XPathResult.ANY_TYPE, null);
+            var tResult = tNodes.iterateNext();
+            var cResult = cNodes.iterateNext();
+            while (cResult) {
+                document.write("category-" + cResult.getAttribute("category"));
+                document.write("<br />");
+                cResult = cNodes.iterateNext();
+            }
+            while (tResult) {
+                document.write("title-" + tResult.childNodes[0].nodeValue);
+                document.write("<br />");
+                tResult = tNodes.iterateNext();
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

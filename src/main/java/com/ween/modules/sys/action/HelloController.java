@@ -19,11 +19,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
@@ -57,6 +59,11 @@ public class HelloController {
         return response.toString();
     }
 
+    /**
+     * 使用Model返回数据给前端
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/showHandSonTable", method = RequestMethod.GET)
     public String showHandSonTable(Model model) {
         Pager pager = new Pager();
@@ -65,6 +72,20 @@ public class HelloController {
         List<User> list = helloService.getAllUsers(pager,"");
         model.addAttribute("msg", list);
         return "handsontable/AutoFieldTable";
+    }
+
+    /**
+     * 使用ModelAndView返回数据给前端
+     * @return
+     */
+    @RequestMapping(value = "/handsonTableFive", method = RequestMethod.GET)
+    public ModelAndView handsonTableFive() {
+        ModelAndView mv=new ModelAndView();
+        Map<String,String> map=new HashMap<>();
+        map.put("test","测试");
+        mv.addAllObjects(map);
+        mv.setViewName("handsontable/handsonTableFive");
+        return mv;
     }
 
     @RequestMapping(value = "/easyuiLayout", method = RequestMethod.GET)

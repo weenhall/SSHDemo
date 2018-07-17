@@ -1,24 +1,39 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="zh-CN">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--国产浏览器开启高速模式，目前仅360支持-->
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="handsontable4">
+    <meta name="keywords" content="table spreedsheet">
+    <meta name="author" content="helloworld">
+    <meta name="robots" content="index,follow">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="shorcut" href="path/to/favicon.ico">
+
     <title>Title</title>
-    <meta charset="UTF-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <script src="${pageContext.request.contextPath}/statics/jquery/jquery-1.9.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/statics/bootstrap/css/bootstrap.min.css">
     <script src="${pageContext.request.contextPath}/statics/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/statics/handsontable/dist/handsontable.full.min.js"></script>
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/statics/handsontable/dist/handsontable.full.min.css">
+    <style type="text/css">
+        .hstable{
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row text-center"><h2>动态字段表格</h2></div>
-    <div id="detailTable" style="margin-left: 20px"></div>
-    <div class="row" style="margin-top: 5px">
-        <div class="col-md-4 col-md-offset-10">
+    <div id="detailTable" class="hstable"></div>
+    <h5 class="page-header"></h5>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9">
             <button type="button" id="save" class="btn btn-success">保存</button>
         </div>
     </div>
@@ -54,7 +69,7 @@
                 }
                colHeaderData.push(tempHeader);
             } else {
-                alert(response.message);
+                alert('初始化错误;'+response.message);
             }
         }
     });
@@ -87,7 +102,8 @@
         columns: columns,
         minSpareRows: 1,
         minRows: 10,
-        height: 600,
+      //  height: 600,
+      //   width:487,
         fixedRowsTop:2,
         fixedColumnsLeft:5,
         rowHeaders: true,
@@ -106,7 +122,11 @@
             {row: 0, col: 5, rowspan: 1, colspan:autoColLen},//院承担
             {row: 0, col: 5+autoColLen, rowspan: 2, colspan: 1},//所承担
             {row: 0, col: 6+autoColLen, rowspan: 2, colspan: 1}
-        ]
+        ],
+        afterInit:function () {
+            //使table居中
+            $('#detailTable').css('width',$('#detailTable .wtHider').css('width'))
+        }
     };
     window.hot = new Handsontable(container, detailOptions);
     hot.updateSettings({

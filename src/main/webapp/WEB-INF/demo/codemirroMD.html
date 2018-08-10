@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--国产浏览器开启高速模式，目前仅360支持-->
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>codemirror-markdown</title>
+    <meta name="description" content="codemirror">
+    <meta name="keywords" content="md">
+    <meta name="author" content="ween">
+    <meta name="robots" content="index,follow">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+
+    <link href="../../statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../statics/css/github-markdown.css" rel="stylesheet">
+    <link href="../../statics/codemirror/lib/codemirror.css" rel="stylesheet">
+    <link href="../../statics/codemirror/theme/idea.css" rel="stylesheet">
+    <link href="../../statics/codemirror/addon/dialog/dialog.css" rel="stylesheet">
+
+    <script src="../../statics/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../../statics/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../statics/marked/marked.min.js"></script>
+    <script src="../../statics/codemirror/lib/codemirror.js"></script>
+    <script src="../../statics/codemirror/addon/edit/continuelist.js"></script>
+    <script src="../../statics/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="../../statics/codemirror/addon/edit/closebrackets.js"></script>
+    <script src="../../statics/codemirror/mode/markdown/markdown.js"></script>
+    <script src="../../statics/codemirror/keymap/sublime.js"></script>
+    <script src="../../statics/codemirror/addon/search/search.js"></script>
+    <script src="../../statics/codemirror/addon/search/searchcursor.js"></script>
+    <script src="../../statics/codemirror/addon/dialog/dialog.js"></script>
+    <script src="../../statics/codemirror/addon/comment/comment.js"></script>
+    <script src="../../statics/codemirror/addon/wrap/hardwrap.js"></script>
+    <style>
+        .CodeMirror{
+            border: 1px solid #eee;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+        <div class="col-md-6 ">
+            <textarea name="editor" id="editor" ># 111</textarea>
+        </div>
+        <div class="col-md-6 ">
+            <div id="content" class="markdown-body" ></div>
+        </div>
+<script>
+    (function () {
+        $(function () {
+            var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+                mode: 'markdown',
+                lineNumbers: true,
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                lineWrapping: true,
+                theme: 'idea',
+                keyMap: 'sublime',
+                extraKeys: {
+                    "Enter": "newlineAndIdentContinueMarkdownList"
+                }
+            });
+            editor.on('change', function (codemirror, e) {
+                $('#content').html(marked(codemirror.getValue()));
+            });
+        });
+    })();
+</script>
+</body>
+</html>

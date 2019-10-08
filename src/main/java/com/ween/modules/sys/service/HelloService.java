@@ -1,5 +1,6 @@
 package com.ween.modules.sys.service;
 
+import com.ween.common.utils.DateUtil;
 import com.ween.modules.sys.dao.HelloDao;
 import com.ween.modules.sys.entity.AutoField;
 import com.ween.modules.sys.entity.User;
@@ -11,8 +12,11 @@ import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by wen on 2017/3/15.
@@ -21,6 +25,8 @@ import java.util.Map;
 public class HelloService {
     @Autowired
     private HelloDao helloDao;
+
+    private Lock lock=new ReentrantLock();
 
     public List<User> getAllUsers(Pager pager, String content) {
         if(pager.getCurrentPage()==0){
@@ -90,6 +96,23 @@ public class HelloService {
         for (int i = 0; i < 5; i++) {
             Thread.sleep(1000);
             System.out.println(user);
+        }
+    }
+
+    public void testLock(String code) {
+        try{
+            System.out.println(code);
+            if("a".equals(code)){
+                lock.lock();
+                Thread.sleep(5000);
+            }
+            System.out.println(DateUtil.formatDate(new Date(),"yyyy-MM-dd HH:mm:ss")+"-"+code);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if("a".equals(code)){
+                lock.unlock();
+            }
         }
     }
 }

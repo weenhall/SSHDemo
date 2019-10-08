@@ -263,4 +263,12 @@ public class HelloController {
         task=taskService.createTaskQuery().singleResult();
         System.out.println(task.getName());
     }
+
+    @PostMapping("/testLock")
+    @ResponseBody
+    public String testLock(@RequestParam String code){
+        Response response=new Response(true);
+        helloService.testLock(code);
+        return response.toString();
+    }
 }

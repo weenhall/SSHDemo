@@ -74,12 +74,28 @@
         }
     });
 
+    //隐藏字段
+    function columnTohide(instance,td,row,col,prop,value,cellProperties) {
+       // Handsontable.renderers.TextRenderer.apply(this,arguments);
+        td.hidden=true;
+        td.innerHTML=value;
+        return td;
+    }
+
+    //自定义渲染序号
+    function xhRender(instance, td, row, col, prop, value, cellProperties) {
+        if(value!=null){
+            td.innerHTML="D"+value;
+            return td;
+        }
+    }
+
     var columns = [
-        {data: "xh", type: 'numeric', readOnly: false},
+        {data: "xh", type: 'numeric', readOnly: false,renderer:xhRender},
         {data: "bzid", type: 'text', readOnly: false},
         {data: "name", type: 'text', readOnly:true},
         {data: "type", type: 'text', readOnly: true},
-        {data: "total", type: 'numeric',format: '00.00', readOnly: false}
+        {data: "total", type: 'numeric',format: '00.00', readOnly: false,renderer:columnTohide}
     ];
     columns=columns.concat(autoColumn);
     columns.push({data: "sfy", type: 'numeric', readOnly: false, format: '00.00'}, {data: "notes", type: 'text', readOnly: false});

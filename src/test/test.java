@@ -1,29 +1,24 @@
 
-import com.ween.common.utils.Encodes;
-import com.ween.learn.util.StringUtil;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.json.XML;
-import sun.security.provider.MD5;
 
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class test {
     private static Logger logger = LogManager.getLogger("test");
 
     public static void main(String[] args)  {
-        Pattern pattern = Pattern.compile("^[0-9a-zA-Z_]{1,}$");
-        Matcher matcher = pattern.matcher("ccode_name");
-        for(int i=0;i<50;i++){
-            System.out.println(matcher.matches());
-        }
+//        Pattern pattern = Pattern.compile("^[0-9a-zA-Z_]{1,}$");
+//        Matcher matcher = pattern.matcher("ccode_name");
+//        for(int i=0;i<50;i++){
+//            System.out.println(matcher.matches());
+//        }
+        System.out.println("你好");
     }
 
     public static void testSwitch(int input) {
